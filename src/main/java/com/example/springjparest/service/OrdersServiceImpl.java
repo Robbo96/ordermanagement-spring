@@ -32,7 +32,7 @@ public class OrdersServiceImpl implements OrdersService {
     public MenuOrder getOrderById(@PathVariable Long orderId) throws OrderNotFoundException {
         Optional<MenuOrder> orders = ordersRepository.findById(orderId);
 
-        if(!orders.isPresent()) {
+        if(orders.isEmpty()) {
             throw new OrderNotFoundException("Order doesn't exist.");
         }
 
