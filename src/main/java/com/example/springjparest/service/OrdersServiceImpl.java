@@ -1,18 +1,14 @@
 package com.example.springjparest.service;
 
-import com.example.springjparest.entity.MenuItem;
 import com.example.springjparest.entity.MenuOrder;
-import com.example.springjparest.entity.OrderItem;
-import com.example.springjparest.error.OrderNotFoundException;
+import com.example.springjparest.error.EntitiyNotFoundException;
 import com.example.springjparest.repository.OrdersRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -29,11 +25,11 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public MenuOrder getOrderById(@PathVariable Long orderId) throws OrderNotFoundException {
+    public MenuOrder getOrderById(@PathVariable Long orderId) throws EntitiyNotFoundException {
         Optional<MenuOrder> orders = ordersRepository.findById(orderId);
 
         if(orders.isEmpty()) {
-            throw new OrderNotFoundException("Order doesn't exist.");
+            throw new EntitiyNotFoundException("Order doesn't exist.");
         }
 
         return orders.get();

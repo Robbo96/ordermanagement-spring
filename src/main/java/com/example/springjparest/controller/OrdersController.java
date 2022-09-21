@@ -1,9 +1,8 @@
 package com.example.springjparest.controller;
 
-import com.example.springjparest.entity.MenuItem;
 import com.example.springjparest.entity.MenuOrder;
 import com.example.springjparest.entity.OrderItem;
-import com.example.springjparest.error.OrderNotFoundException;
+import com.example.springjparest.error.EntitiyNotFoundException;
 import com.example.springjparest.service.ItemService;
 import com.example.springjparest.service.OrderItemService;
 import com.example.springjparest.service.OrdersService;
@@ -35,7 +34,7 @@ public class OrdersController {
     }
 
     @GetMapping("/orders/{id}")
-    public MenuOrder getOrderById(@PathVariable("id") Long orderId) throws OrderNotFoundException {
+    public MenuOrder getOrderById(@PathVariable("id") Long orderId) throws EntitiyNotFoundException {
         return ordersService.getOrderById(orderId);
     }
 
@@ -55,7 +54,7 @@ public class OrdersController {
             @PathVariable Long orderId,
             @PathVariable Long orderItemId
 
-    ) throws OrderNotFoundException {
+    ) throws EntitiyNotFoundException {
         MenuOrder menuOrder = ordersService.getOrderById(orderId);
         OrderItem orderItem = orderItemService.findById(orderItemId); //ezt getOne()-ra, deprecated mar
         menuOrder.addOrderItem(orderItem);

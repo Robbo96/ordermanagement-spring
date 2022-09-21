@@ -1,16 +1,14 @@
 package com.example.springjparest.service;
 
-import com.example.springjparest.entity.MenuItem;
 import com.example.springjparest.entity.MenuOrder;
-import com.example.springjparest.entity.OrderItem;
-import com.example.springjparest.error.OrderNotFoundException;
+import com.example.springjparest.error.EntitiyNotFoundException;
 
 import java.util.List;
 
 public interface OrdersService {
     MenuOrder saveOrder(MenuOrder order);
 
-    MenuOrder getOrderById(Long id) throws OrderNotFoundException;
+    MenuOrder getOrderById(Long id) throws EntitiyNotFoundException;
 
     List<MenuOrder> getAllOrders();
 

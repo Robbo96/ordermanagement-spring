@@ -2,6 +2,7 @@ package com.example.springjparest.controller;
 
 import com.example.springjparest.entity.MenuItem;
 import com.example.springjparest.entity.OrderItem;
+import com.example.springjparest.error.EntitiyNotFoundException;
 import com.example.springjparest.service.ItemService;
 import com.example.springjparest.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class OrderItemController {
     @PostMapping("/{menuItemId}/{quantity}")
     public OrderItem createAndSaveOrderItem(
                                             @PathVariable Long menuItemId,
-                                            @PathVariable int quantity){
+                                            @PathVariable int quantity) throws EntitiyNotFoundException {
         MenuItem menuItem = itemService.findById(menuItemId);
         OrderItem orderItem = new OrderItem();
         orderItem.setItemQuantity(quantity);
