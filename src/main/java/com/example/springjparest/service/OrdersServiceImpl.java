@@ -47,12 +47,21 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public MenuOrder updateOrder(Long orderId, MenuOrder menuOrder) {
-        MenuOrder menuOrderDB = ordersRepository.findById(orderId).get();
+        MenuOrder menuOrderDB = ordersRepository.findById(orderId).get(); //exception handling
 
         if(menuOrder.isIsMenuOrderComplete()) { //true alapbol
             menuOrderDB.setIsMenuOrderComplete(menuOrder.isIsMenuOrderComplete());
         }
         return ordersRepository.save(menuOrderDB);
+    }
+
+    @Override
+    public void deleteAllCompleteOrders(List<MenuOrder> menuOrder) {
+        for (MenuOrder order : menuOrder){
+            if (order.isIsMenuOrderComplete()) {
+                ordersRepository.deleteById(order.getOrderId());
+            }
+        }
     }
 
 }

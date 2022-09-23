@@ -44,9 +44,16 @@ public class OrdersController {
     }
 
     @DeleteMapping("/orders/{id}")
-    public String deleteOrderById(@PathVariable("id") Long orderId){
+    public String deleteOrderById(@PathVariable("id") Long orderId) {
         ordersService.deleteOrderById(orderId);
-        return "Order deleted Successfully!!";
+        return "Order deleted Successfully!";
+    }
+
+    @DeleteMapping()
+    public String deleteCompletedOrders() {
+        List<MenuOrder> menuOrder = ordersService.getAllOrders();
+        ordersService.deleteAllCompleteOrders(menuOrder);
+        return "Completed orders deleted!";
     }
 
     @PutMapping("/{orderId}/orderItems/{orderItemId}")

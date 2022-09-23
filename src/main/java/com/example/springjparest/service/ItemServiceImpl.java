@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class ItemServiceImpl implements ItemService {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public ItemServiceImpl(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;

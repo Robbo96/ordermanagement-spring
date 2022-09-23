@@ -16,4 +16,5 @@ public interface OrdersService {
 
    MenuOrder updateOrder(Long orderId, MenuOrder menuOrder);
 
+    void deleteAllCompleteOrders(List<MenuOrder> menuOrder);
 }
