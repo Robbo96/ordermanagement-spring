@@ -15,11 +15,11 @@ import java.util.List;
 @RequestMapping("/orders")
 public class OrdersController {
 
-    private OrdersService ordersService;
+    private final OrdersService ordersService;
 
-    private ItemService itemService;
+    private ItemService itemService; //delete this later
 
-    private OrderItemService orderItemService;
+    private final OrderItemService orderItemService;
 
     @Autowired
     public OrdersController(OrdersService ordersService, ItemService itemService, OrderItemService orderItemService) {
