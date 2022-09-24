@@ -58,7 +58,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public void deleteAllCompleteOrders(List<MenuOrder> menuOrder) {
         for (MenuOrder order : menuOrder){
-            if (order.isIsMenuOrderComplete()) {
+            if (order.isIsMenuOrderComplete()) { //typo
                 ordersRepository.deleteById(order.getOrderId());
             }
         }
