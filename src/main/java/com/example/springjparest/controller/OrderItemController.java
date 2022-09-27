@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/orderItems")
 public class OrderItemController {
 
-    private OrderItemService orderItemService;
-    private ItemService itemService;
+    private final OrderItemService orderItemService;
+    private final ItemService itemService;
 
     @Autowired
     public OrderItemController(OrderItemService orderItemService, ItemService itemService) {

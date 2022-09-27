@@ -13,7 +13,7 @@ import java.awt.*;
 @RequestMapping("/items")
 public class ItemController {
 
-    private ItemService itemService;
+    private final ItemService itemService;
 
     @Autowired
     public ItemController(ItemService itemService) {

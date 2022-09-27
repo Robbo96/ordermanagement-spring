@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 public class OrdersServiceImpl implements OrdersService {
-    private OrdersRepository ordersRepository;
+    private final OrdersRepository ordersRepository;
 
     public OrdersServiceImpl(OrdersRepository ordersRepository) {
         this.ordersRepository = ordersRepository;
@@ -49,8 +49,8 @@ public class OrdersServiceImpl implements OrdersService {
     public MenuOrder updateOrder(Long orderId, MenuOrder menuOrder) {
         MenuOrder menuOrderDB = ordersRepository.findById(orderId).get(); //exception handling
 
-        if(menuOrder.isIsMenuOrderComplete()) { //true alapbol
-            menuOrderDB.setIsMenuOrderComplete(menuOrder.isIsMenuOrderComplete());
+        if(menuOrder.isMenuOrderCompleted()) {
+            menuOrderDB.setMenuOrderCompleted(menuOrder.isMenuOrderCompleted());
         }
         return ordersRepository.save(menuOrderDB);
     }
@@ -58,7 +58,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public void deleteAllCompleteOrders(List<MenuOrder> menuOrder) {
         for (MenuOrder order : menuOrder){
-            if (order.isIsMenuOrderComplete()) { //typo
+            if (order.isMenuOrderCompleted()) { //typo
                 ordersRepository.deleteById(order.getOrderId());
             }
         }

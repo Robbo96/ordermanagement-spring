@@ -1,11 +1,7 @@
 package com.example.springjparest.entity;
 
-import org.aspectj.weaver.ast.Or;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,7 +11,7 @@ public class MenuOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
 
-    private boolean isMenuOrderComplete;
+    private boolean menuOrderCompleted;
     @ManyToMany
     @JoinTable(name = "menuorder_orderitem",
             joinColumns = { @JoinColumn(name = "fk_menuorder") },
@@ -25,7 +21,7 @@ public class MenuOrder {
 
     public MenuOrder(Long orderId, boolean isMenuOrderComplete, Set<OrderItem> orderItems) {
         this.orderId = orderId;
-        this.isMenuOrderComplete = isMenuOrderComplete;
+        this.menuOrderCompleted = isMenuOrderComplete;
         this.orderItems = orderItems;
     }
 
@@ -40,12 +36,12 @@ public class MenuOrder {
         this.orderId = orderId;
     }
 
-    public boolean isIsMenuOrderComplete() {
-        return isMenuOrderComplete;
+    public boolean isMenuOrderCompleted() {
+        return menuOrderCompleted;
     }
 
-    public void setIsMenuOrderComplete(boolean orderStatus) {
-        this.isMenuOrderComplete = orderStatus;
+    public void setMenuOrderCompleted(boolean orderStatus) {
+        this.menuOrderCompleted = orderStatus;
     }
 
     public Set<OrderItem> getOrderItems() {
