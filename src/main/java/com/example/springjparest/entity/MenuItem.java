@@ -1,12 +1,14 @@
 package com.example.springjparest.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+//@Builder
 public class MenuItem {
 
     @Id

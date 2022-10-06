@@ -1,6 +1,7 @@
 package com.example.springjparest.controller;
 
 import com.example.springjparest.entity.MenuItem;
+import com.example.springjparest.error.EntitiyNotFoundException;
 import com.example.springjparest.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +28,13 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public MenuItem getItemById(@PathVariable("id") Long itemId){
-        return itemService.getItemById(itemId);
+    public MenuItem getItemById(@PathVariable("id") Long itemId) throws EntitiyNotFoundException {
+        return itemService.findById(itemId);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteItemById(@PathVariable("id") Long itemId) throws EntitiyNotFoundException {
+        itemService.deleteItemById(itemId);
+        return "MenuItem deleted successfully!";
     }
 }

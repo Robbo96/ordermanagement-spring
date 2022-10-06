@@ -30,8 +30,6 @@ public class OrderItemController {
         orderItem.setItemQuantity(quantity);
         orderItem.setMenuItem(menuItem);
 
-        //exception
-        //csak csináljon egy orderItemet
         return orderItemService.saveItem(orderItem);
     }
 }

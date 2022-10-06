@@ -43,4 +43,15 @@ public class ItemServiceImpl implements ItemService {
     public MenuItem getItemById(Long itemId) {
         return itemRepository.getById(itemId);
     }
+
+    @Override
+    public void deleteItemById(Long itemId) throws EntitiyNotFoundException {
+        Optional<MenuItem> item = itemRepository.findById(itemId);
+
+        if (item.isEmpty()) {
+            throw new EntitiyNotFoundException("Item doesn't exist");
+        }
+
+        itemRepository.deleteById(itemId);
+    }
 }

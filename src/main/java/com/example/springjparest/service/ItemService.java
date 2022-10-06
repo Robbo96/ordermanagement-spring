@@ -10,5 +10,7 @@ public interface ItemService {
 
     boolean isItemExists(String itemName);
 
-    MenuItem getItemById(Long itemId);
+    MenuItem getItemById(Long itemId); //cleanup
+
+    void deleteItemById(Long itemId) throws EntitiyNotFoundException;
 }
