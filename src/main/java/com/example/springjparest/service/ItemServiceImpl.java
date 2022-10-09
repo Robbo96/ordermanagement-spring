@@ -1,11 +1,12 @@
 package com.example.springjparest.service;
 
 import com.example.springjparest.entity.MenuItem;
-import com.example.springjparest.error.EntitiyNotFoundException;
+import com.example.springjparest.error.EntityNotFoundException;
 import com.example.springjparest.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.Optional;
 //import javax.validation.Valid;
@@ -24,11 +25,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public MenuItem findById(Long itemId) throws EntitiyNotFoundException {
+    public MenuItem findById(Long itemId) throws EntityNotFoundException {
         Optional<MenuItem> item = itemRepository.findById(itemId);
 
         if (item.isEmpty()) {
-            throw new EntitiyNotFoundException("Item doesn't exist.");
+            throw new EntityNotFoundException("Item doesn't exist.");
         }
 
         return item.get();
@@ -45,11 +46,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteItemById(Long itemId) throws EntitiyNotFoundException {
+    public void deleteItemById(Long itemId) throws EntityNotFoundException, MethodArgumentTypeMismatchException {
         Optional<MenuItem> item = itemRepository.findById(itemId);
 
         if (item.isEmpty()) {
-            throw new EntitiyNotFoundException("Item doesn't exist");
+            throw new EntityNotFoundException("Item doesn't exist");
         }
 
         itemRepository.deleteById(itemId);

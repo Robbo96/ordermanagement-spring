@@ -2,7 +2,7 @@ package com.example.springjparest.service;
 
 import com.example.springjparest.entity.MenuItem;
 import com.example.springjparest.entity.OrderItem;
-import com.example.springjparest.error.EntitiyNotFoundException;
+import com.example.springjparest.error.EntityNotFoundException;
 import com.example.springjparest.repository.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ class ItemServiceTest {
     }
 
     @Test
-    public void whenValidItemId_thenItemFound() throws EntitiyNotFoundException {
+    public void whenValidItemId_thenItemFound() throws EntityNotFoundException {
         Long menuItemId = 1L;
         MenuItem found = itemService.findById(menuItemId);
 
@@ -47,7 +47,7 @@ class ItemServiceTest {
     }
 
     @Test
-    public void whenInvalidItemId_thenItemFound() throws EntitiyNotFoundException {
+    public void whenInvalidItemId_thenItemFound() throws EntityNotFoundException {
         Long menuItemWrongId = 3L;
         Long menuItemId = 1L;
         MenuItem found = itemService.findById(menuItemId);

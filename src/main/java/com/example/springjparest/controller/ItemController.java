@@ -1,14 +1,11 @@
 package com.example.springjparest.controller;
 
 import com.example.springjparest.entity.MenuItem;
-import com.example.springjparest.error.EntitiyNotFoundException;
+import com.example.springjparest.error.EntityNotFoundException;
 import com.example.springjparest.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.print.attribute.standard.Media;
-import java.awt.*;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @RestController
 @RequestMapping("/items")
@@ -28,12 +25,12 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public MenuItem getItemById(@PathVariable("id") Long itemId) throws EntitiyNotFoundException {
+    public MenuItem getItemById(@PathVariable("id") Long itemId) throws EntityNotFoundException {
         return itemService.findById(itemId);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteItemById(@PathVariable("id") Long itemId) throws EntitiyNotFoundException {
+    public String deleteItemById(@PathVariable("id") Long itemId) throws EntityNotFoundException, MethodArgumentTypeMismatchException {
         itemService.deleteItemById(itemId);
         return "MenuItem deleted successfully!";
     }

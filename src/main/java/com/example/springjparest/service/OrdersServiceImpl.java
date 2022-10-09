@@ -1,7 +1,7 @@
 package com.example.springjparest.service;
 
 import com.example.springjparest.entity.MenuOrder;
-import com.example.springjparest.error.EntitiyNotFoundException;
+import com.example.springjparest.error.EntityNotFoundException;
 import com.example.springjparest.repository.OrdersRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -25,11 +25,11 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public MenuOrder getOrderById(@PathVariable Long orderId) throws EntitiyNotFoundException {
+    public MenuOrder getOrderById(@PathVariable Long orderId) throws EntityNotFoundException {
         Optional<MenuOrder> orders = ordersRepository.findById(orderId);
 
         if(orders.isEmpty()) {
-            throw new EntitiyNotFoundException("Order doesn't exist.");
+            throw new EntityNotFoundException("Order doesn't exist.");
         }
 
         return orders.get();

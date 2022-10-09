@@ -1,7 +1,7 @@
 package com.example.springjparest.service;
 
 import com.example.springjparest.entity.OrderItem;
-import com.example.springjparest.error.EntitiyNotFoundException;
+import com.example.springjparest.error.EntityNotFoundException;
 import com.example.springjparest.repository.OrderItemRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -19,12 +19,12 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public OrderItem findById(Long orderItemId) throws EntitiyNotFoundException {
+    public OrderItem findById(Long orderItemId) throws EntityNotFoundException {
         Optional<OrderItem> orderItem = orderItemRepository.findById(orderItemId);
         //Optional<OrderItem> orderItem = orderItemRepository.getById(orderItemId);
 
         if (orderItem.isEmpty()) {
-            throw new EntitiyNotFoundException("OrderItem doesn't exist.");
+            throw new EntityNotFoundException("OrderItem doesn't exist.");
         }
 
         return orderItem.get();
