@@ -17,14 +17,11 @@ public class OrdersController {
 
     private final OrdersService ordersService;
 
-    private ItemService itemService; //delete this later
-
     private final OrderItemService orderItemService;
 
     @Autowired
-    public OrdersController(OrdersService ordersService, ItemService itemService, OrderItemService orderItemService) {
+    public OrdersController(OrdersService ordersService, OrderItemService orderItemService) {
         this.ordersService = ordersService;
-        this.itemService = itemService;
         this.orderItemService = orderItemService;
     }
 
@@ -75,8 +72,5 @@ public class OrdersController {
         return ordersService.updateOrder(orderId, menuOrder);
     }
 
-    //ez csak id helyett névvel
-
-    //updatemap(orders/id)
 
 }

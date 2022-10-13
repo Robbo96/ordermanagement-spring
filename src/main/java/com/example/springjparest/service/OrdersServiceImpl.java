@@ -47,7 +47,7 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public MenuOrder updateOrder(Long orderId, MenuOrder menuOrder) {
-        MenuOrder menuOrderDB = ordersRepository.findById(orderId).get(); //exception handling
+        MenuOrder menuOrderDB = ordersRepository.findById(orderId).get(); //exception
 
         if(menuOrder.isMenuOrderCompleted()) {
             menuOrderDB.setMenuOrderCompleted(menuOrder.isMenuOrderCompleted());
@@ -58,7 +58,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public void deleteAllCompleteOrders(List<MenuOrder> menuOrder) {
         for (MenuOrder order : menuOrder){
-            if (order.isMenuOrderCompleted()) { //typo
+            if (order.isMenuOrderCompleted()) {
                 ordersRepository.deleteById(order.getOrderId());
             }
         }
