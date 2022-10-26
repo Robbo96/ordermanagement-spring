@@ -14,9 +14,6 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itemId;
-    //@JsonIgnore
-    //@ManyToMany(mappedBy="items")
-    //private Set<MenuOrder> orders = new HashSet<>();
     @JsonIgnore
     @OneToMany(mappedBy = "menuItem")
     private Set<OrderItem> orderItems = new HashSet<>();
@@ -33,22 +30,11 @@ public class MenuItem {
         this.itemCategory = itemCategory;
         this.price = price;
         this.orderItems = orderItems;
-        //this.menuOrder = menuOrder;
     }
 
     public MenuItem() {
 
     }
-    /*
-    public Set<MenuOrder> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<MenuOrder> orders) {
-        this.orders = orders;
-    }
-
-     */
 
     public Set<OrderItem> getOrderItems() {
         return orderItems;

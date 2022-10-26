@@ -48,29 +48,8 @@ public class MenuOrder {
         return orderItems;
     }
 
-    /*
-    public void setOrderItems(Set<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-
-    public Set<MenuItem> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<MenuItem> items) {
-        this.items = items;
-    }
-
-     */
-
     public void addOrderItem(OrderItem item){
         orderItems.add(item);
     }
-/*
-    public void addItems(MenuItem item) {
-        items.add(item);
-    }
 
- */
 }

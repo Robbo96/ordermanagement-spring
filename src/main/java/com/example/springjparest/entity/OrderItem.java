@@ -13,9 +13,8 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderItemId;
 
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne
     private MenuItem menuItem;
-    //lazy-re tenni
 
     @JsonIgnore
     @ManyToMany(mappedBy="orderItems")

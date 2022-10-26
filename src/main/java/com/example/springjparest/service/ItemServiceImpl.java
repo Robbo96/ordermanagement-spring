@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.Optional;
-//import javax.validation.Valid;
 
 @Service
 public class ItemServiceImpl implements ItemService {

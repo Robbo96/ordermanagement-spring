@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("api/v1/orders")
 public class OrdersController {
 
     private final OrdersService ordersService;
@@ -60,7 +60,7 @@ public class OrdersController {
 
     ) throws EntityNotFoundException {
         MenuOrder menuOrder = ordersService.getOrderById(orderId);
-        OrderItem orderItem = orderItemService.findById(orderItemId); //ezt getOne()-ra, deprecated mar
+        OrderItem orderItem = orderItemService.findById(orderItemId);
         menuOrder.addOrderItem(orderItem);
         return ordersService.saveOrder(menuOrder);
 

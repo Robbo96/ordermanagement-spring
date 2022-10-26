@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @RestController
-@RequestMapping("/items")
+@RequestMapping("api/v1/items")
 public class ItemController {
 
     private final ItemService itemService;

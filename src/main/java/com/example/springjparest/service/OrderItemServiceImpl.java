@@ -21,7 +21,6 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Override
     public OrderItem findById(Long orderItemId) throws EntityNotFoundException {
         Optional<OrderItem> orderItem = orderItemRepository.findById(orderItemId);
-        //Optional<OrderItem> orderItem = orderItemRepository.getById(orderItemId);
 
         if (orderItem.isEmpty()) {
             throw new EntityNotFoundException("OrderItem doesn't exist.");
